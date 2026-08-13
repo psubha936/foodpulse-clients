@@ -1,15 +1,33 @@
 {
-  "name": "foodpulse-clients",
+  "name": "@psubha936/foodpulse-clients",
   "version": "1.0.0",
-  "description": "MongoDB, Redis, Kafka, WebSocket, S3 and Cognito clients",
+  "description": "Reusable infrastructure clients for FoodPulse Node.js services",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist",
     "README.md"
   ],
   "engines": {
     "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psubha936/foodpulse-clients.git"
+  },
+  "bugs": {
+    "url": "https://github.com/psubha936/foodpulse-clients/issues"
+  },
+  "homepage": "https://github.com/psubha936/foodpulse-clients#readme",
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -18,7 +36,8 @@
     "test:redis": "npm run build && node --env-file=.env test/redis.integration.js",
     "test:kafka": "npm run build && node --env-file=.env test/kafka.integration.js",
     "test:websocket": "npm run build && node test/websocket.integration.js",
-    "test:aws": "npm run build && node --test test/aws.test.js"
+    "test:aws": "npm run build && node --test test/aws.test.js",
+    "prepublishOnly": "npm run build && node --test test/logger.test.js test/aws.test.js"
   },
   "keywords": [],
   "author": "",
