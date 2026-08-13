@@ -1,5 +1,5 @@
 {
-  "name": "@psubha936/foodpulse-clients",
+  "name": "@subhaprakash/foodpulse-clients",
   "version": "1.0.0",
   "description": "Reusable infrastructure clients for FoodPulse Node.js services",
   "main": "dist/index.js",
