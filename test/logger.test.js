@@ -14,6 +14,7 @@ test("client logger redacts connection credentials", () => {
       uri: "mongodb+srv://real-user:real-password@example.mongodb.net/foodpulse",
       endpoint: "redis://default:redis-password@127.0.0.1:16379",
       password: "another-password",
+      accessKeyId: "AKIAFAKELOGGERTEST",
     });
   } finally {
     console.log = originalLog;
@@ -24,5 +25,6 @@ test("client logger redacts connection credentials", () => {
   assert.equal(output[0].includes("real-password"), false);
   assert.equal(output[0].includes("redis-password"), false);
   assert.equal(output[0].includes("another-password"), false);
+  assert.equal(output[0].includes("AKIAFAKELOGGERTEST"), false);
   assert.equal(output[0].includes("<redacted>"), true);
 });

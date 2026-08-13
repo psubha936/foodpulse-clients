@@ -9,7 +9,8 @@ export interface ClientLogger {
 
 type LogLevel = "debug" | "info" | "warn" | "error";
 
-const SECRET_KEY_PATTERN = /password|secret|token|credential|authorization|uri|url/i;
+const SECRET_KEY_PATTERN =
+  /password|secret|token|credential|authorization|access.?key|private.?key|uri|url/i;
 
 function redactText(value: string): string {
   return value
