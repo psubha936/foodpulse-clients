@@ -1,0 +1,36 @@
+{
+  "name": "foodpulse-clients",
+  "version": "1.0.0",
+  "description": "Kafka, Redis, MongoDB, WebSocket clients",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test:logger": "npm run build && node --test test/logger.test.js",
+    "test:mongodb": "npm run build && node --env-file=.env test/mongodb.integration.js",
+    "test:redis": "npm run build && node --env-file=.env test/redis.integration.js",
+    "test:kafka": "npm run build && node --env-file=.env test/kafka.integration.js",
+    "test:websocket": "npm run build && node test/websocket.integration.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kafkajs": "^2.2.4",
+    "mongodb": "^7.5.0",
+    "redis": "^6.2.1",
+    "ws": "^8.21.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@types/ws": "^8.18.1",
+    "typescript": "^7.0.2"
+  }
+}
